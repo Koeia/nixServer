@@ -13,17 +13,11 @@
         name = "Koeia";
         email = "whereischason@protonmail.com";
       };
-      init.defaultBranch = "main";
+      init.defaultBranch = "server";
       core.editor = "vim";
     };
   };
 
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.catppuccin-cursors.mochaDark;
-    name = "mochaDark";
-  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -32,7 +26,7 @@
       enable = true;
     };
     shellAliases = {
-      update = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixCall";
+      update = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#nixServer";
     };
     initContent = ''
       		${pkgs.fastfetch}/bin/fastfetch
@@ -42,11 +36,6 @@
       plugins = [ ];
       theme = "aussiegeek";
     };
-    profileExtra = ''
-      if [ -z "$WAYLAND_DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        exec start-hyprland
-      fi
-    '';
   };
   home.file.".config/hypr".source = ./config/hypr;
 

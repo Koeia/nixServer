@@ -11,10 +11,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,11 +26,10 @@
       ...
     }:
     {
-      nixosConfigurations.nixCall = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.nixServer = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-          ./noctalia.nix
           ./configuration.nix
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
