@@ -22,11 +22,6 @@
 
   time.timeZone = "America/New_York";
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
   users.users.jctannu4 = {
     isNormalUser = true;
     extraGroups = [
@@ -43,36 +38,19 @@
   programs.zsh.enable = true;
 
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    fuzzel
-    kitty
     git-credential-manager
     libsecret
     gnome-keyring
+    proton-vpn-cli
     package-version-server
     git
     vim
     wget
     curl
-    alacritty
-    waybar
-    zed-editor
-    quickshell
-    kdePackages.dolphin
-    brightnessctl
     udiskie
     usbutils
     yazi
-    termius
   ];
-
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   nix.settings.experimental-features = [
     "nix-command"
