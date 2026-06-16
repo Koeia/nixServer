@@ -16,7 +16,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "nixCall";
+  networking.hostName = "nixServer";
   networking.networkmanager.enable = true;
   hardware.bluetooth.enable = true;
 
